@@ -20,7 +20,7 @@ export function useTreeGrid() {
     store.getAll().map((item) => ({
       ...item,
       category: store.getChildren(item.id).length ? 'Группа' : 'Элемент',
-    }))
+    })),
   );
 
   const columnDefs: ColDef[] = [
@@ -54,8 +54,7 @@ export function useTreeGrid() {
     suppressHeaderMenuButton: true,
   };
 
-  const getRowId = (params: GetRowIdParams) =>
-    String(params.data.id);
+  const getRowId = (params: GetRowIdParams) => String(params.data.id);
 
   const onRowDataUpdated = (params: any) => {
     let i = 1;

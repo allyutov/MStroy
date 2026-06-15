@@ -33,10 +33,7 @@ export class TreeStore<T extends TreeItem> {
     while (current) {
       result.push(current);
 
-      current =
-        current.parent === null
-          ? undefined
-          : this.itemMap.get(current.parent);
+      current = current.parent === null ? undefined : this.itemMap.get(current.parent);
     }
 
     return result;
@@ -52,9 +49,7 @@ export class TreeStore<T extends TreeItem> {
 
       result.push(current);
 
-      stack.push(
-        ...(this.childrenMap.get(current.id) ?? [])
-      );
+      stack.push(...(this.childrenMap.get(current.id) ?? []));
     }
 
     return result;
@@ -83,14 +78,9 @@ export class TreeStore<T extends TreeItem> {
       return;
     }
 
-    const idsToDelete = new Set<TreeId>([
-      id,
-      ...this.getAllChildren(id).map(item => item.id),
-    ]);
+    const idsToDelete = new Set<TreeId>([id, ...this.getAllChildren(id).map((item) => item.id)]);
 
-    this.items = this.items.filter(
-      item => !idsToDelete.has(item.id),
-    );
+    this.items = this.items.filter((item) => !idsToDelete.has(item.id));
 
     this.buildIndexes();
   }
@@ -102,9 +92,7 @@ export class TreeStore<T extends TreeItem> {
       throw new Error(`Item ${item.id} not found`);
     }
 
-    const index = this.items.findIndex(
-      current => current.id === item.id,
-    );
+    const index = this.items.findIndex((current) => current.id === item.id);
 
     this.items[index] = item;
 

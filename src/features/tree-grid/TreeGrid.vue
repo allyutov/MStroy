@@ -17,12 +17,6 @@
 import { AgGridVue } from 'ag-grid-vue3';
 import { useTreeGrid } from './useTestGrid.ts';
 
-const {
-  rowData,
-  columnDefs,
-  autoGroupColumnDef,
-  defaultColDef,
-  getRowId,
-  onRowDataUpdated,
-} = useTreeGrid();
+const { rowData, columnDefs, autoGroupColumnDef, defaultColDef, getRowId, onRowDataUpdated } =
+  useTreeGrid();
 </script>
